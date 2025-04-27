@@ -56,7 +56,7 @@ export class AIService {
               - Alasan Perubahan: Jelaskan alasan perubahan
            3. Fokus pada tujuan dan dampak perubahan
            4. Format respons sebagai:
-              Judul: ${type}: pesan commit
+              ${type}: pesan commit
               Deskripsi:
                 Perubahan:
                 Alasan Perubahan:
@@ -71,7 +71,7 @@ export class AIService {
               - Why: Explain the reason for the changes
            3. Focus on the purpose and impact of the changes
            4. Format the response as:
-              Title: ${type}: commit message
+              ${type}: commit message
               Description:
                 What:
                 Why:
