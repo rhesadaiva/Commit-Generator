@@ -1,6 +1,6 @@
 import { parse } from "jsr:@std/flags@0.218.2";
 import { Select } from "@cliffy/prompt";
-import { blue, bold, yellow } from "jsr:@std/fmt/colors";
+import { blue, bold, green, red, yellow } from "jsr:@std/fmt/colors";
 
 import { COMMIT_TYPES, LANGUAGE_OPTIONS, VERSION } from "./modules/config.ts";
 import { Logger } from "./modules/logger.ts";
@@ -92,22 +92,22 @@ export async function main() {
         );
 
         Logger.success("Generated commit:");
-        Logger.delimiter();
+        // Logger.delimiter();
 
         // Box for Generated Commit Message
         const commitMessageBoxContent = `${message}\n\n${description}`;
-        Logger.box("Generated Commit Message ✨", commitMessageBoxContent);
+        Logger.box("Generated Commit Message ✨", commitMessageBoxContent, "green");
 
         // Get commit statistics
         const diffStats = await GitService.getDiffStatistics(repoPath);
         const statsContent = [
-            `Files changed: ${diffStats.filesChanged}`,
-            `Insertions: ${diffStats.insertions}`,
-            `Deletions: ${diffStats.deletions}`,
+            `${blue(bold("Files changed"))}: ${diffStats.filesChanged}`,
+            `${green(bold("Insertions"))}: ${diffStats.insertions}`,
+            `${red(bold("Deletions"))}: ${diffStats.deletions}`,
         ].join("\n");
 
         // Box for Commit Statistics
-        Logger.box("Commit Statistic 📊", statsContent, blue);
+        Logger.box("Commit Statistic 📊", statsContent, "blue");
 
         Logger.delimiter();
 

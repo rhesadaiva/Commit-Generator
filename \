@@ -6,6 +6,8 @@ import { AI_CONFIG } from "./config.ts";
 import { Logger } from "./logger.ts";
 import { GeneratedCommit } from "./types.ts";
 
+import { bold, brightBlue, green } from "jsr:@std/fmt/colors";
+
 export class AIService {
     private static client: OpenAI;
 
@@ -99,7 +101,9 @@ export class AIService {
             });
 
             // Extract content from response
+            console.log("DEBUG RESPONSE", response);
             const content = response.choices[0].message.content?.trim() || "";
+            console.log("DEBUG CONTENT", content);
 
             // Parse the content to separate message and description
             const parts = content.split(/\n+/, 2);

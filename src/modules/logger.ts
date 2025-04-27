@@ -2,6 +2,7 @@
  * Logging utilities for consistent terminal output
  */
 import { blue, bold, cyan, green, red, yellow } from "jsr:@std/fmt/colors";
+import boxen from "npm:boxen";
 
 export class Logger {
     /**
@@ -63,14 +64,16 @@ export class Logger {
     static box(
         title: string,
         content: string,
-        color: (text: string) => string = green,
+        color: string,
     ): void {
-        console.log(color(`┌── ${title} ──┐`));
-        console.log(color(`│`));
-        content.split("\n").forEach((line) => {
-            console.log(color(`│ ${line}`));
-        });
-        console.log(color(`│`));
-        console.log(color(`└────────────┘`));
+        console.log(
+            boxen(content, {
+                padding: 1,
+                title,
+                titleAlignment: "center",
+                borderColor: color,
+                width: 100,
+            }),
+        );
     }
 }
