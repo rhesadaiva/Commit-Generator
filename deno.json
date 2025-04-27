@@ -2,7 +2,8 @@
   "name": "git-commit-msg-generator",
   "version": "1.0.0",
   "description": "Intelligent Git commit message generator using AI",
-  "compilerOptions": {
+"exports": "./src/main.ts",
+   "compilerOptions": {
     "lib": ["deno.window"]
   },
   "tasks": {
