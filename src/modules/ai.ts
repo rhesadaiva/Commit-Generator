@@ -103,8 +103,8 @@ export class AIService {
 
             // Parse the content to separate message and description
             const parts = content.split(/\n+/, 2);
-            let message = parts[0].trim();
-            let description = parts.length > 1
+            const message = parts[0].trim();
+            const description = parts.length > 1
                 ? content.substring(parts[0].length).trim()
                 : "";
             // Ensure the message has the type prefix
@@ -113,7 +113,7 @@ export class AIService {
             console.log(description);
 
             return { message, description };
-        } catch (error) {
+        } catch (error: any) {
             Logger.error("Failed to generate commit message", error);
             throw error;
         }
